@@ -1,39 +1,31 @@
 #include "sort.h"
 
 /**
- * swap - Swaps two elements of an array
- * @a: Integer a
- * @b: Integer b
- */
-void swap(int *a, int *b)
-{
-	int temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
-/**
- * bubble_sort - Doubly linked list node
- * @array: Array of integers to print
- * @size: Size of the array
+ * bubble_sort - function that sorts an array
+ * of integers in ascending order using the
+ * Bubble sort algorithm
+ *
+ * @array: input arrray
+ * @size: size of the array
+ * Return: no return
  */
 void bubble_sort(int *array, size_t size)
 {
-	size_t i, j;
+	size_t i, n;
+	int tmp, swap;
 
-	if (size < 2)
-		return;
-
-	for (i = 0; i < size - 1; i++)
+	for (n = size, swap = 1; n > 0 && swap; n--)
 	{
-		/*Last i elements are already in place*/
-		for (j = 0; j < size - i - 1; j++)
+		swap = 0;
+		for (i = 0; (i + 1) < n; i++)
 		{
-			/*Swap if the element found is greater than the next element*/
-			if (array[j] > array[j + 1])
+			if (array[i] > array[i + 1])
 			{
-				swap(&array[j], &array[j + 1]);
+				tmp = array[i + 1];
+				array[i + 1] = array[i];
+				array[i] = tmp;
 				print_array(array, size);
+				swap = 1;
 			}
 		}
 	}
