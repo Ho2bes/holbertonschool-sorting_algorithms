@@ -1,9 +1,10 @@
 #ifndef SORT_H
 #define SORT_H
 
-#include <stdbool.h>
-#include <stdlib.h>
+/*-HEADER FILE-*/
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
 /**
  * struct listint_s - Doubly linked list node
@@ -19,10 +20,24 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
-void bubble_sort(int *array, size_t size);
+/*-Function print-*/
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
-void insertion_sort_list(listint_t **list);
+
+/*-PROTOTYPES-*/
+
+/*-GARY-*/
+void bubble_sort(int *array, size_t size);
 void selection_sort(int *array, size_t size);
+/*-Adavanced Tasks-*/
+void shell_sort(int *array, size_t size);
+
+
+/*-KEVIN-*/
+void insertion_sort_list(listint_t **list);
 void quick_sort(int *array, size_t size);
-#endif
+void quicksort(int *array, int min, int max, size_t size);
+/*-Adavanced Tasks-*/
+void quick_sort_hoare(int *array, size_t size);
+
+#endif /* SORT_H */
