@@ -1,39 +1,35 @@
 #include "sort.h"
+
 /**
- * shell_sort - sorts an array of integers using the Shell sort algorithm
- * Description: whit Knuth sequence
- * @array: the array to sort
- * @size: size of the array
-*/
+ * shell_sort - Sorts an array of integers using the Shell sort algorithm
+ * Description: with Knuth sequence
+ * @array: The array to sort
+ * @size: Size of the array
+ */
 void shell_sort(int array[], int size)
 {
-	int tempon, j, i, interval = 1;
-
-	if (array == NULL || size < 2)
-		return;
-	/* Calcul de l'intervalle max selon la séquence de Knuth*/
-	while (interval * 3 + 1 < size)
-		interval = interval * 3 + 1;
-
-	while (interval > 0)
-	{
-		for (i = interval; i < size; i++)
-		{
-			tempon = array[i];
-			j = i;
-
-			/* Tri par insertion */
-			while (j >= interval && array[j - interval] > tempon)
-			{
-				array[j] = array[j - interval];
-				j -= interval;
-			}
-
-			array[j] = tempon;
-		}
-		print_array(array, size);
-
-		/* Calcul l'interval inférieur*/
-		interval = (interval - 1) / 3;
-	}
+int temp, i, j, interval = 1;
+if (array == NULL || size < 2)
+return;
+/* Calculate the maximum interval according to the Knuth sequence */
+while (interval * 3 + 1 < size)
+interval = interval * 3 + 1;
+while (interval > 0)
+{
+for (i = interval; i < size; i++)
+{
+temp = array[i];
+j = i;
+/* Insertion sort */
+while (j >= interval && array[j - interval] > temp)
+{
+array[j] = array[j - interval];
+j -= interval;
+}
+array[j] = temp;
+}
+print_array(array, size);
+/* Calculate the next smaller interval */
+interval = (interval - 1) / 3;
+}
 }
